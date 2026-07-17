@@ -1,0 +1,16 @@
+{
+  "name": "dimhelper-pay-backend",
+  "version": "1.0.0",
+  "description": "خادم خلفي بسيط يربط تطبيق DIMhelper ببوابة الدفع Chargily Pay بشكل آمن",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "dotenv": "^16.4.5"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

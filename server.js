@@ -62,6 +62,11 @@ app.use((req, res, next) => {
 app.post('/webhooks/chargily', express.raw({ type: 'application/json' }), handleWebhook);
 app.use(express.json());
 
+// ── صفحتا "تم الدفع بنجاح" و"لم يكتمل الدفع" — تُعرَضان لولي الأمر بعد إتمام/فشل الدفع ──
+// (لا حاجة لموقع منفصل — نفس هذا الخادم يعرضهما مباشرة)
+app.get('/payment-success', (req, res) => res.sendFile(__dirname + '/public/success.html'));
+app.get('/payment-failed', (req, res) => res.sendFile(__dirname + '/public/failure.html'));
+
 // ============================================================================
 // 1) إنشاء Checkout — يُستدعى من الواجهة الخلفية لنظامك (وليس من متصفح الولي مباشرة
 //    بدون مرور عبر هذا الخادم) عند طلب "تسديد الاشتراك أونلاين"
